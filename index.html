@@ -36,12 +36,24 @@
         }
         
         .container {
-            max-width: 800px;
+            width: 95%;
+            max-width: 1200px; /* más ancho en pantallas grandes */
             margin: 0 auto;
             background: white;
             position: relative;
             z-index: 1;
-            padding: 15px;
+            padding: 20px;
+        }
+
+        /* --- IMPRESIÓN --- */
+        @media print {
+            body { background: white; }
+            .watermark { position: absolute; }
+            .container {
+                max-width: 800px; /* formato documento A4 */
+                width: 100%;
+                padding: 0;
+            }
         }
         
         .header {
