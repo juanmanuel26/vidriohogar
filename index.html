@@ -32,6 +32,7 @@
             font-weight: bold;
             color: #1E5FF0;
             pointer-events: none;
+            text-align: center;
         }
         
         .container {
@@ -40,6 +41,7 @@
             background: white;
             position: relative;
             z-index: 1;
+            padding: 15px;
         }
         
         .header {
@@ -49,6 +51,7 @@
             margin-bottom: 30px;
             border-bottom: 3px solid #1E5FF0;
             padding-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .company-info h1 {
@@ -67,6 +70,7 @@
         .logo {
             width: 150px;
             height: auto;
+            margin-top: 15px;
         }
         
         .quote-title {
@@ -103,6 +107,10 @@
             font-size: 14px;
         }
         
+        .table-container {
+            overflow-x: auto;
+        }
+        
         .items-table {
             width: 100%;
             border-collapse: collapse;
@@ -110,6 +118,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-radius: 8px;
             overflow: hidden;
+            min-width: 600px;
         }
         
         .items-table th {
@@ -168,6 +177,7 @@
         .terms ul {
             color: #856404;
             font-size: 14px;
+            padding-left: 20px;
         }
         
         .footer {
@@ -179,22 +189,44 @@
             margin-top: 30px;
         }
         
-        .signature-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 40px 0;
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .company-info h1 {
+                font-size: 24px;
+            }
+            .logo {
+                margin: 20px auto 0;
+            }
+            .quote-info {
+                grid-template-columns: 1fr;
+            }
+            .total-row {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
         }
         
-        .signature-box {
-            text-align: center;
-            border-top: 2px solid #1E5FF0;
-            padding-top: 10px;
-        }
-        
-        @media print {
-            body { background: white; }
-            .watermark { position: absolute; }
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            .company-info h1 {
+                font-size: 22px;
+            }
+            .quote-title h2 {
+                font-size: 18px;
+            }
+            .items-table th,
+            .items-table td {
+                padding: 10px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -212,15 +244,12 @@
             </div>
             <div class="logo">
                 <svg width="150" height="100" viewBox="0 0 400 300">
-                    <!-- Logo Vidrio -->
                     <text x="50" y="80" font-family="Arial, sans-serif" font-size="45" font-weight="bold" fill="#1E5FF0">vidrio</text>
                     <circle cx="70" cy="45" r="8" fill="#FF5722"/>
                     <circle cx="240" cy="45" r="8" fill="#1E5FF0"/>
                     <circle cx="330" cy="45" r="8" fill="#FF5722"/>
                     <circle cx="220" cy="80" r="8" fill="#4CAF50"/>
                     <circle cx="380" cy="80" r="8" fill="#4CAF50"/>
-                    
-                    <!-- Hogar -->
                     <text x="140" y="140" font-family="Arial, sans-serif" font-size="35" fill="#1E5FF0">hogar</text>
                 </svg>
             </div>
@@ -232,7 +261,6 @@
         </div>
         
         <div class="quote-info">
-            
             <div class="info-box">
                 <h3>📅 Detalles de la Cotización</h3>
                 <p><strong>Fecha:</strong> 02 de Septiembre, 2025</p>
@@ -242,34 +270,34 @@
             </div>
         </div>
         
-        <table class="items-table">
-            <thead>
-                <tr>
-                    <th>Ítem</th>
-                    <th>Descripción</th>
-                    <th>Cantidad</th>
-                    <th>Valor Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>001</strong></td>
-                    <td>
-                        <strong>Vidrio Templado 10mm con Perforaciones</strong><br>
-                        <small>• Espesor: 10mm</small><br>
-                        <small>• Tipo: Vidrio templado de seguridad</small><br>
-                        <small>• Perforaciones para pasamanos</small><br>
-                        <small>• Bordes pulidos</small><br>
-                    </td>
-                    <td style="text-align: center;"><strong>5</strong><br><small>unidades</small></td>
-                    <td style="text-align: right;"><strong>$850,000</strong></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th>Ítem</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>001</strong></td>
+                        <td>
+                            <strong>Vidrio Templado 10mm con Perforaciones</strong><br>
+                            <small>• Espesor: 10mm</small><br>
+                            <small>• Tipo: Vidrio templado de seguridad</small><br>
+                            <small>• Perforaciones para pasamanos</small><br>
+                            <small>• Bordes pulidos</small><br>
+                        </td>
+                        <td style="text-align: center;"><strong>5</strong><br><small>unidades</small></td>
+                        <td style="text-align: right;"><strong>$850,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
         <div class="total-section">
-            <div style="display: flex; justify-content: space-between; padding: 5px 0;">
-            </div>
             <div class="total-row">
                 <span>TOTAL A PAGAR:</span>
                 <span>$850,000</span>
@@ -282,46 +310,14 @@
                 <li><strong>Validez:</strong> Esta cotización es válida por 15 días calendario.</li>
                 <li><strong>Forma de pago:</strong> 50% anticipo, 50% contraentrega.</li>
                 <li><strong>Tiempo de entrega:</strong> 7 a 10 días hábiles después de confirmado el pedido.</li>
-                <!-- <li><strong>Garantía:</strong> 12 meses por defectos de fabricación.</li> -->
-                <!-- <li><strong>Instalación:</strong> No incluida en esta cotización.</li> -->
-                <!-- <li><strong>Transporte:</strong> Incluido dentro del perímetro urbano de Cali.</li> -->
                 <li><strong>Medidas:</strong> Se requiere visita técnica para medidas exactas.</li>
             </ul>
         </div>
-        
-        <!-- <div class="signature-section">
-            <div class="signature-box">
-                <p><strong>Elaborado por:</strong></p>
-                <br><br>
-                <p>_________________________</p>
-                <p>VIDRIO HOGAR</p>
-                <p>Asesor Comercial</p>
-            </div>
-            <div class="signature-box">
-                <p><strong>Aceptación del Cliente:</strong></p>
-                <br><br>
-                <p>_________________________</p>
-                <p>Nombre y Firma</p>
-                <p>Fecha: _______________</p>
-            </div>
-        </div> -->
         
         <div class="footer">
             <p><strong>¡Gracias por confiar en VIDRIO HOGAR!</strong></p>
             <p>Su satisfacción es nuestra prioridad | Especialistas en vidrios de seguridad</p>
         </div>
     </div>
-
-    <script>
-        // Función para imprimir o guardar como PDF
-        function printQuote() {
-            window.print();
-        }
-        
-        // Auto-print después de cargar (opcional)
-        // window.onload = function() {
-        //     setTimeout(printQuote, 1000);
-        // }
-    </script>
 </body>
 </html>
